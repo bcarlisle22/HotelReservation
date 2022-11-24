@@ -10,7 +10,7 @@ again="y"
 
 while again.lower()== "y":
     while True:
-        date_str = input("Enter arrival date(YYYY-MM-DD: ")
+        date_str = input("Enter arrival date(YYYY-MM-DD): ")
         try:
             arrival_date = datetime.strptime(date_str, "%Y-%m-%d")
         except ValueError:
@@ -30,13 +30,14 @@ while again.lower()== "y":
 #departure date
 
     while True:
-        date_str = input("Enter departure date(YYYY-MM-DD: ")
+        date_str = input("Enter departure date(YYYY-MM-DD): ")
         try:
            departure_date = datetime.strptime(date_str, "%Y-%m-%d")
         except ValueError:
            print("Invalid date format. Please try again. ")
            print()
            continue
+
         if departure_date <= arrival_date:
            print("Depature date must be after arrival date. Please try again.")
            print()
@@ -53,13 +54,14 @@ while again.lower()== "y":
     total_nights = (departure_date - arrival_date).days
     total_cost = rate * total_nights
 
-    date.format= "%B %d, %Y"
+    date_format= "%B %d, %Y"
     locale.setlocale(locale.LC_ALL, "en_US")
     print(f"Arrival Date: {arrival_date:{date_format}}")
     print(f"Departure Date: {departure_date: {date_format}}")
-    print(f"Nightly rate: {locale.currency(rate)} {rate_message")
+    print(f"Nightly rate: {locale.currency(rate)} {rate_message}")
     print(f"Total night:  {total_nights}")
     print(f"Total prices: {locale.currency(total_cost)}")
+    print()
 
     again= input ("Continue? (y/n): ")
     print()
